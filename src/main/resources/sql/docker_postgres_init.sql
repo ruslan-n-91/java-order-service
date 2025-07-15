@@ -1,0 +1,1 @@
+CREATE DATABASE java_order_service_db;
