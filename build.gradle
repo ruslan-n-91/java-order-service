@@ -2,8 +2,8 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.5.3'
     id 'io.spring.dependency-management' version '1.1.7'
-    id "de.undercouch.download" version "5.6.0"
-    id "org.openapi.generator" version "7.13.0"
+//    id "de.undercouch.download" version "5.6.0"
+//    id "org.openapi.generator" version "7.13.0"
 }
 
 group = 'com.example'
@@ -70,23 +70,23 @@ repositories {
 //
 //sourceSets.main.java.srcDirs += ["${layout.buildDirectory.get()}/generated/src/main/java"]
 
-ext {
-    set('springCloudVersion', "2025.0.0")
-}
-
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
-    }
-}
+//ext {
+//    set('springCloudVersion', "2025.0.0")
+//}
+//
+//dependencyManagement {
+//    imports {
+//        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+//    }
+//}
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
-    implementation 'io.swagger.core.v3:swagger-annotations:2.2.20'
-    implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
-    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+//    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
+//    implementation 'io.swagger.core.v3:swagger-annotations:2.2.20'
+//    implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
     runtimeOnly 'org.postgresql:postgresql'
 
