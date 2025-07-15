@@ -45,30 +45,40 @@ repositories {
 //
 //sourceSets.main.java.srcDirs += ["${layout.buildDirectory.get()}/generated/src/main/java"]
 
-tasks.register("downloadOpenApiSpec", Download) {
-    src "http://localhost:8256/v3/api-docs"
-    dest "${layout.buildDirectory.get()}/openapi.json"
-    onlyIfModified true
+//tasks.register("downloadOpenApiSpec", Download) {
+//    src "http://localhost:8256/v3/api-docs"
+//    dest "${layout.buildDirectory.get()}/openapi.json"
+//    onlyIfModified true
+//}
+//
+//tasks.register("generateOpenApiClient", org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
+//    dependsOn downloadOpenApiSpec
+//    generatorName = "java"
+//    inputSpec = "${layout.buildDirectory.get()}/openapi.json"
+//    outputDir = "${layout.buildDirectory.get()}/generated"
+//    apiPackage = "com.example.client.api"
+//    modelPackage = "com.example.client.model"
+//    configOptions = [
+//            java8: "true",
+//            dateLibrary: "java8",
+//            library: "restclient",
+//            useJakartaEe: "true"
+//    ]
+//}
+//
+//compileJava.dependsOn generateOpenApiClient
+//
+//sourceSets.main.java.srcDirs += ["${layout.buildDirectory.get()}/generated/src/main/java"]
+
+ext {
+    set('springCloudVersion', "2025.0.0")
 }
 
-tasks.register("generateOpenApiClient", org.openapitools.generator.gradle.plugin.tasks.GenerateTask) {
-    dependsOn downloadOpenApiSpec
-    generatorName = "java"
-    inputSpec = "${layout.buildDirectory.get()}/openapi.json"
-    outputDir = "${layout.buildDirectory.get()}/generated"
-    apiPackage = "com.example.client.api"
-    modelPackage = "com.example.client.model"
-    configOptions = [
-            java8: "true",
-            dateLibrary: "java8",
-            library: "restclient",
-            useJakartaEe: "true"
-    ]
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
-
-compileJava.dependsOn generateOpenApiClient
-
-sourceSets.main.java.srcDirs += ["${layout.buildDirectory.get()}/generated/src/main/java"]
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -76,6 +86,7 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0'
     implementation 'io.swagger.core.v3:swagger-annotations:2.2.20'
     implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
     runtimeOnly 'org.postgresql:postgresql'
 
