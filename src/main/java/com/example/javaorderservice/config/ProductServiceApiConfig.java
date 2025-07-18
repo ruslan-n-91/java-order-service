@@ -1,7 +1,7 @@
 package com.example.javaorderservice.config;
-//
+
 //import com.example.client.ApiClient;
-//import com.example.client.api.ProductServiceApi;
+//import com.example.client.api.ProductControllerApi;
 //import org.springframework.beans.factory.annotation.Value;
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
@@ -14,9 +14,9 @@ package com.example.javaorderservice.config;
 //    private String productServiceUrl;
 //
 //    @Bean
-//    public ProductServiceApi productServiceApiClient(RestClient.Builder restClient) {
+//    public ProductControllerApi productServiceApiClient(RestClient.Builder restClient) {
 //        ApiClient apiClient = new ApiClient(restClient.baseUrl(productServiceUrl).build());
 //        //apiClient.setBasePath(productServiceUrl);
-//        return new ProductServiceApi(apiClient);
+//        return new ProductControllerApi(apiClient);
 //    }
 //}

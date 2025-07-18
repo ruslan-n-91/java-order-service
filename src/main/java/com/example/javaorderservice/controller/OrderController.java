@@ -32,7 +32,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderController {
     private final OrderService orderService;
-    //    private final ProductServiceApi productServiceApi;
+    //   private final ProductControllerApi productServiceApi; // название класса сервиса может сгенериться не правильно
     //    private final ProductServiceClient productServiceClient;
     private final ProductServiceClient productServiceClient;
 
@@ -82,7 +82,7 @@ public class OrderController {
 //    public ResponseEntity<CreateProductResponseDto> createProductOpenFeign(@RequestBody CreateProductRequestDto requestDto) {
 //        return productServiceClient.createProduct(requestDto);
 //    }
-
+//
     @GetMapping("/getAllProductsHttpExchange")
     public ResponseEntity<List<GetProductResponseDto>> getAllProductsHttpExchange() {
         return productServiceClient.getAllProducts();
