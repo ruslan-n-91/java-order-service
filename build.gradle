@@ -88,13 +88,11 @@ dependencies {
 //    implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
-    implementation 'io.micrometer:micrometer-tracing-bridge-brave'
-    implementation 'io.micrometer:micrometer-tracing'
-//    implementation 'io.micrometer:micrometer-tracing-bridge-otel'
-    implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'io.zipkin.brave:brave-context-slf4j'
     implementation 'io.micrometer:micrometer-registry-prometheus'
+
+    implementation 'io.micrometer:micrometer-tracing-bridge-otel'
+    implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
 
     runtimeOnly 'org.postgresql:postgresql'
 

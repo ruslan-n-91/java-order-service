@@ -1,5 +1,6 @@
 package com.example.javaorderservice.openfeign;
 
+import io.micrometer.tracing.propagation.Propagator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import io.micrometer.tracing.Tracer;
@@ -9,14 +10,13 @@ import feign.RequestInterceptor;
 public class FeignConfig {
 
     @Bean
-    public RequestInterceptor tracingFeignRequestInterceptor(Tracer tracer) {
+    public RequestInterceptor tracingFeignRequestInterceptor(Tracer tracer, Propagator propagator) {
         return template -> {
             if (tracer.currentSpan() != null) {
-                template.header("X-B3-TraceId", tracer.currentSpan().context().traceId());
-                template.header("X-B3-SpanId", tracer.currentSpan().context().spanId());
-                if (tracer.currentSpan().context().parentId() != null) {
-                    template.header("X-B3-ParentSpanId", tracer.currentSpan().context().parentId());
-                }
+                // Автоматически добавляет W3C и B3
+                propagator.inject(tracer.currentSpan().context(),
+                        template,
+                        (request, key, value) -> request.header(key, value));
             }
         };
     }
