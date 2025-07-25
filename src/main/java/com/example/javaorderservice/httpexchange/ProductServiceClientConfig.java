@@ -10,9 +10,10 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 public class ProductServiceClientConfig {
 
     @Bean
-    public ProductServiceClient productServiceClient() {
+    public ProductServiceClient productServiceClient(TracingClientHttpRequestInterceptor tracingInterceptor) {
         RestClient restClient = RestClient.builder()
                 //.baseUrl("http://localhost:8256")  // Можно переопределить URL
+                .requestInterceptor(tracingInterceptor)
                 .build();
 
         HttpServiceProxyFactory factory = HttpServiceProxyFactory
