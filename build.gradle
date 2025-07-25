@@ -88,6 +88,10 @@ dependencies {
 //    implementation 'org.openapitools:jackson-databind-nullable:0.2.6'
 //    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+
     runtimeOnly 'org.postgresql:postgresql'
 
     implementation "org.mapstruct:mapstruct:$mapstructVersion"
