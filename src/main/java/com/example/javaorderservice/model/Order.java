@@ -27,7 +27,15 @@ import java.time.Instant;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "order_seq_generator"
+    )
+    @SequenceGenerator(
+            name = "order_seq_generator",
+            sequenceName = "orders_id_seq",
+            allocationSize = 1
+    )
     @Column(name = "id")
     private Long id;
 
