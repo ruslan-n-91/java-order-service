@@ -45,6 +45,9 @@ public class OrderServiceImpl implements OrderService {
 
         order = orderRepository.save(order);
 
+//        System.out.println("Order id 2 " + order.getId());
+//        System.out.println("Order hashcode 2 " + order.hashCode());
+
         return orderMapper.mapToCreateOrderResponseDto(order);
     }
 
@@ -69,16 +72,20 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private Order createNewOrder(CreateOrderRequestDto requestDto) {
-        Order order = new Order();
+//        Order order = Order.builder()
+//                .orderNumber(requestDto.getOrderNumber())
+//                .status(requestDto.getStatus())
+//                .createdAt(Instant.now())
+//                .build();
 
-        if (requestDto.getId() != null) {
-            order.setId(requestDto.getId());
-        }
-        order.setOrderNumber(requestDto.getOrderNumber());
-        order.setStatus(requestDto.getStatus());
-        order.setCreatedAt(Instant.now());
+//        System.out.println("Order id 1 " + order.getId());
+//        System.out.println("Order hashcode 1 " + order.hashCode());
 
-        return order;
+        return Order.builder()
+                .orderNumber(requestDto.getOrderNumber())
+                .status(requestDto.getStatus())
+                .createdAt(Instant.now())
+                .build();
     }
 
     private void updateOrderFields(Order order, UpdateOrderRequestDto requestDto) {

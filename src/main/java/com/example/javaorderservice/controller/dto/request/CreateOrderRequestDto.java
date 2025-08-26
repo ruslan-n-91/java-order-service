@@ -14,7 +14,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateOrderRequestDto {
-    private Long id;
     private String orderNumber;
     private String status;
 }
